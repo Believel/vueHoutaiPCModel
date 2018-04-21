@@ -1,0 +1,59 @@
+//定位上下左右居中
+@mixin center {
+		position: absolute;
+		top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+}
+@mixin all {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	top: 0;
+}
+
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+/*定义公共颜色样式*/
+/*文字颜色*/
+$black_c:#000000;
+
+/*占位符颜色*/
+$placehoder_c:rgb(204, 204, 204);
+
+
+/*白色*/
+$wihte_c:#000000;
+
+/*再深一点颜色*/
+$deep_c:#333;
+
+/*文字灰*/
+$grey_c:#999;
+
+/* 红色 */
+$red_c: #EA3D45;
+
+/*背景颜色*/
+$bg_c:rgba(0, 0, 0, 0.498);
+
+
+/*定义固定文字尺寸*/
+$font10:20px;
+
+$font12:24px;
+
+$font14:28px;
+
+$font16:32px;
+
+$font18:36px;
+
+$font20:48px;

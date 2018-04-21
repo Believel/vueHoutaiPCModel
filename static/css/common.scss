@@ -1,0 +1,343 @@
+/*.router-fade-enter-active, .router-fade-leave-active {
+      transition: opacity .1s;
+}
+.router-fade-enter, .router-fade-leave-active {
+    opacity: 0;
+}*/
+
+#app {
+    font-family: 'PingFangSC-Regular';
+    color: #000000;
+    font-size: 16px;
+}
+
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td {
+    outline:none;
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+}
+
+::-webkit-input-placeholder {
+    color: #999999;
+    font-size:14px;
+}
+
+img{
+    width:100%;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+/*文字超出省略号 第二行超出省略*/
+
+.ellipisis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ellipisis2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.textleft {
+    text-align: left;
+}
+.margintop20{
+    margin-top:1rem;
+}
+.textright {
+    text-align: right;
+}
+.padleft{
+    padding-left: 1rem;
+}
+.divline{
+    height: 0.2rem;
+    background-color:$bordercolor;
+}
+.divhead{
+    padding-left: 1rem;
+    height: 2.5rem;
+    background-color:$wihte_c;
+    border-top:0.2rem solid $bordercolor;
+    border-bottom:1px solid $bordercolor;
+    @include font(0.8rem,2.5rem);
+}
+/*自适应颜色*/
+
+.mywhite{
+    color:#fff;
+}
+/*公共样式*/
+.fixed{
+    position: fixed;
+}
+/*输入框选择框宽高*/
+.inputwh{
+    @include wh(11.6rem,1.75rem);
+}
+/*登录输入框*/
+.app_input{
+    width: 16.4rem;
+    height:2.5rem;
+    border-radius: 2px;
+    border:1px solid $bordercolor;
+    font-size:0.9rem;
+    padding:0 0.75rem;
+}
+/*普通输入框*/
+.app_input_a{
+    width:10.7rem;
+    height:1.65rem;
+    border-radius: 2px;
+    border:1px solid $bordercolor;
+    font-size:0.7rem;
+    padding:0 0.4rem;
+    color:$gray;
+    transition:border .3s;
+}
+.app_input_a:hover{
+    border:1px solid #bbbac0;
+    transition:border .3s;
+}
+/*登录按钮*/
+.app_btn{
+    background-color:$topgreen;
+    width:100%;
+    border: 1px solid rgba(32,128,103,0.16);
+    border-radius: 2px;
+    color:$wihte_c;
+    height:2.5rem;
+    font-size:0.9rem;
+    cursor: pointer;
+}
+.app_btn:hover{
+    background-color:$greenlight;
+}
+/*绿色按钮*/
+.app_btn_in{
+    display:inline-block;
+    background-color:$topgreen;
+    width:100%;
+    border-radius: 2px;
+    color:$wihte_c;
+    height:1.75rem;
+    cursor: pointer;
+    text-align: center;
+    @include font(0.7rem,1.75rem);
+}
+.app_btn_in:hover{
+    background-color:$greenlight;
+}
+.downloadbtn{
+    width: 5.55rem;
+    margin-left: .95rem;
+}
+/*红色按钮*/
+.app_btn_red{
+    display:inline-block;
+    background-color:$red_c;
+    width:100%;
+    border-radius: 2px;
+    color:$wihte_c;
+    height:1.75rem;
+    cursor: pointer;
+    text-align: center;
+    @include font(0.7rem,1.75rem);
+}
+.app_btn_red:hover{
+    color:$red_h;
+    border:1px solid $red_h;
+    background-color:$red_h;
+}
+/*白色按钮*/
+.app_btn_in_w{
+    display:inline-block;
+    background-color:$wihte_c;
+    width:100%;
+    border-radius: 2px;
+    color:$gray;
+    height:1.75rem;
+    cursor: pointer;
+    text-align: center;
+    border:1px solid $bordercolor;
+    @include font(0.7rem,1.75rem);
+}
+.app_btn_in_w:hover{
+    color:$topgreen;
+    border:1px solid $green_b!important;
+    background-color:$green_h;
+}
+/*表格顶部搜索条件样式*/
+.searchead{
+    .resultbtn2{
+        width:4.5rem;
+        margin-right:0.45rem;
+    }
+    .resultbtn{
+        width:5.5rem;
+        margin-right:0.45rem;
+    }
+    .input_div{
+        display:inline-block;
+        >input{
+            margin:0 0.45rem;
+        }
+        .wd{
+            margin:0 0.45rem;
+            width:11.6rem;
+        }
+    }
+}
+/*数据列表*/
+.searchcon{
+    margin-top:1rem;
+    position: relative;
+    .addbtn{
+        position: absolute;
+        top: 0.38rem;
+        right:7.5rem;
+        width:4.1rem;
+        >div{
+            position: relative;
+            top: -0.1rem;
+            img{
+                width: 1.2rem;
+                vertical-align: middle;
+                position: relative;
+                top: 1px;
+            }
+            span{
+                position: relative;
+                top: 2px;
+                display:inline-block;
+            }
+        }
+    }
+    .sortype{
+        position: absolute;
+        right:1.5rem;
+        width:5.5rem;
+    }
+}
+/*表格样式*/
+.spanleft{
+    margin-right:0.45rem;
+}
+.piliang{
+    margin: 0 1rem;
+    @include font(0.7rem,2.4rem);
+}
+.tablepadding{
+    background-color:$wihte_c;
+    padding: 1.5rem 1.2rem;
+}
+.checkedall{//全选
+    @include font(0.7rem,0.7rem);
+    margin: 1.85rem 0 0 .75rem;
+    color:$gray;
+}
+.derivedata{//导出数据按钮
+    width:4.1rem;
+}
+.datefromto{//日期选择按钮
+    position: relative;
+    top:0.07rem;
+}
+/*操作*/
+.scopestate1{
+    padding: 0 10px;
+    @include font(0.7rem,0.7rem);
+}
+.scopestate2{
+    padding: 0 10px;
+    @include font(0.7rem,0.7rem);
+    color:$gray2;
+}
+/*分页*/
+.pagingpage{
+    float: right;
+    color:$gray;
+    margin-top: 1.5rem;
+}
+.pagingpage2{
+    float: inherit;
+    width: 100%;
+    text-align: right;
+}
+.middlesize{
+    font-size:0.7rem;
+}
+.bigsize{
+    font-size:0.8rem;
+}
+/*上三角*/
+.triangleup{
+    width: 0;
+    height: 0;
+    border-width: 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+    display: inline-block;
+}
+.triangledown{
+    width: 0;
+    height: 0;
+    border-width: 6px 6px 0px;
+    border-style: solid;
+    border-color: #fff transparent transparent;
+    display: inline-block;
+}
+/*上涨下跌百分比*/
+.updownspan{
+    color:$wihte_c;
+    line-height: 1rem;
+    display:inline-block;
+    text-align: center;
+    border-radius: 3px;
+    height:1rem;
+    padding: 0 0.3rem;
+    b{
+        position: relative;
+        top:-0.1rem;
+        left:-0.1rem;
+    }
+}
+/*饼图的说明*/
+.pielegend{
+    position: absolute;
+    b{
+        width:.5rem;
+        height:.5rem;
+        border-radius: 100%;
+        display:inline-block;
+        margin-right:.375rem;
+    }
+    span{
+        font-size:.7rem;
+        margin-right:2.5rem;
+    }
+}
+/*分割线*/
+.navline{
+    display: inline-block;
+    height: 12px;
+    width: 1px;
+    position: relative;
+    top: 1px;
+    background-color: $gray2;
+}

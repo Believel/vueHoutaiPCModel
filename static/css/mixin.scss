@@ -1,0 +1,91 @@
+
+// 背景图片地址和大小
+@mixin bis($url) {
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+@mixin bis1($url) {
+	background-image: url($url);
+	background-repeat: no-repeat;
+}
+
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+//定位全屏
+@mixin allcover{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+//定位上下左右居中
+@mixin center {
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+//上下边线颜色
+@mixin bordertb($color){
+    border-top:1px solid $color;
+    border-bottom:1px solid $color;
+}
+//定位上下居中
+@mixin ct {
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin cl {
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height){
+	width: $width;
+	height: $height;
+}
+
+//margin左右间距
+@mixin marginlr($left, $right){
+	margin-left: $left;
+	margin-right: $right;
+}
+//margin左上
+@mixin marginlt($left, $top){
+	margin-left: $left;
+	margin-top: $top;
+}
+
+//最小宽度
+@mixin minw($width){
+	min-width: $width;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'PingFangSC-Regular') {
+	font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+	display: flex;
+	justify-content: $type;
+
+}
