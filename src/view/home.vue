@@ -14,7 +14,7 @@
       </div>
       <!-- 二级路由内容 -->
       <div class="content">
-
+          <router-view></router-view>
       </div>
       <!-- 底部版权 -->
       <div class="copyright">
@@ -64,7 +64,6 @@
           @include all();
           top: 58px;
           left: 258px;
-          width: 100%;
           height: 55px;
           background-color: pink;
       }
@@ -73,18 +72,15 @@
         top: 113px;
         bottom: 55px;
         left: 258px;
-        background: orange;
-
+        background: #fff;
       }
       .copyright {
         @include all();
         height: 55px;
-        width: 100%;
         left: 258px;
         bottom: 0;
         top: auto;
         background-color: #ccc;
-
       }
   }
 </style>
