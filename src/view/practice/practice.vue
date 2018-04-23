@@ -97,7 +97,13 @@
                 <el-input v-model="input" placehoder="请输入" clearable></el-input>
             </el-col>
         </el-row>
-       
+        <Title mytitle="计数器"></Title>
+        <el-input-number v-model="num" @change="handleChangeNum" controls-position="left" :min="1" :max="10" :step="2" label="文字描述"></el-input-number>
+        <Title mytitle="选择器"></Title>
+        <el-select  v-model="value" placehoder="请选择" clearable >
+            <el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled">
+            </el-option>
+        </el-select>
         
     </div>
 </template>
@@ -117,8 +123,26 @@ export default {
             checkAll: false,
             checkedCities: ['上海', '北京'],
             cities: ['上海', '北京', '广州', '深圳'],
-            input: ''
-
+            input: '',
+            num: 1,
+            options: [{
+                value: '选项1',
+                label: '黄金糕'
+            }, {
+                value: '选项2',
+                label: '双皮奶'
+            }, {
+                value: '选项3',
+                label: '蚵仔煎',
+                disabled: true
+            }, {
+                value: '选项4',
+                label: '龙须面'
+            }, {
+                value: '选项5',
+                label: '北京烤鸭'
+            }],
+            value: ''
         }
     },
     components: {
@@ -142,7 +166,10 @@ export default {
             let checkedCount = city.length;
             this.checkAll = checkedCount === this.cities.length;
             this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-
+        },
+        // 改变数值方法
+        handleChangeNum(value) {
+            console.log(value);
         }
     }
 }
