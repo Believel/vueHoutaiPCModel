@@ -104,6 +104,23 @@
             <el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled">
             </el-option>
         </el-select>
+        <Title mytitle="对话框"></Title>
+        <el-button type="primary" @click="dialogVisible = true">点击打开dialog</el-button>
+
+
+
+        <!-- 模态框 -->
+        <el-dialog title="收货地址" :visible.sync="dialogVisible" width="50%" :before-close="handleClose">
+            <el-table :data="gridData">
+                <el-table-column property="date" label="日期" width="150"></el-table-column>
+                <el-table-column property="name" label="姓名" width="200"></el-table-column>
+                <el-table-column property="address" label="地址" ></el-table-column>
+            </el-table>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible=false">取消</el-button>
+                <el-button type="primary" @click="dialogVisible=false">确定</el-button>
+            </span>
+        </el-dialog>
         
     </div>
 </template>
@@ -142,7 +159,17 @@ export default {
                 value: '选项5',
                 label: '北京烤鸭'
             }],
-            value: ''
+            value: '',
+            // 对话框
+            dialogVisible: false,
+            // 表格数据
+            gridData: [
+                {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'},
+                {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'},
+                {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'},
+                {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'}
+            ]
+
         }
     },
     components: {
@@ -170,7 +197,17 @@ export default {
         // 改变数值方法
         handleChangeNum(value) {
             console.log(value);
+        },
+        // 关闭模态框
+        handleClose(done) {
+            console.log(done);
+            this.$confirm('确定关闭？')
+                .then(_ => {
+                    done();
+                })
+                .catch(_ => {});
         }
+
     }
 }
 </script>
