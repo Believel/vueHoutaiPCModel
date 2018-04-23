@@ -106,11 +106,65 @@
         </el-select>
         <Title mytitle="对话框"></Title>
         <el-button type="primary" @click="dialogVisible = true">点击打开dialog</el-button>
+        <Title mytitle="警告"></Title>
+        <el-row>
+            <el-alert title="成功的提示" type="success" center show-icon :closable="false"></el-alert>
+        </el-row>
+        <el-row>
+             <el-alert title="消息提示信息" type="info" show-icon description="文字说明文字说明文字说明"></el-alert>
+        </el-row>
+        <el-row>
+             <el-alert title="警告提示" type="warning" @close="getclose"></el-alert>
+        </el-row>
+        <el-row>
+             <el-alert title="错误提示" type="error"></el-alert>
+        </el-row>
+        <Title mytitle="加载"></Title>
+        <el-table
+            v-loading="loading2"
+            element-loading-text="拼命加载中"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
+            :data="gridData"
+            style="width: 100%">
+            <el-table-column
+                prop="date"
+                label="日期"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="name"
+                label="姓名"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="address"
+                label="地址">
+            </el-table-column>
+        </el-table>
+        <el-row style="margin-top: 10px;">
+            <el-button type="primary" @click="openFullScreen" v-loading.fullscreen.lock="fullscreenLoading">指令方式</el-button>
+            <el-button type="primary" @click="openFullScreen2">服务方式</el-button>
+        </el-row>
+        <Title mytitle="消息提示"></Title>
+        <el-button :plain="true" @click="open">打开消息提示</el-button>
+        <el-button :plain="true" @click="openVn">VNode</el-button>
+        <el-row style="margin-top: 10px;">
+            <el-button :plain="true" @click="open1">成功</el-button>
+            <el-button :plain="true" @click="open2">消息</el-button>
+            <el-button :plain="true" @click="open3">警告</el-button>
+            <el-button :plain="true" @click="open4">错误</el-button>
+        </el-row>
+        <Title mytitle="弹框"></Title>
+       
+        
+        
+        
 
 
 
         <!-- 模态框 -->
-        <el-dialog title="收货地址" :visible.sync="dialogVisible" width="50%" :before-close="handleClose">
+        <el-dialog title="收货地址" :visible.sync="dialogVisible" width="50%" :before-close="handleClose" center>
             <el-table :data="gridData">
                 <el-table-column property="date" label="日期" width="150"></el-table-column>
                 <el-table-column property="name" label="姓名" width="200"></el-table-column>
@@ -168,7 +222,9 @@ export default {
                 {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'},
                 {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'},
                 {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'}
-            ]
+            ],
+            loading2: true,
+            fullscreenLoading: false
 
         }
     },
@@ -206,6 +262,60 @@ export default {
                     done();
                 })
                 .catch(_ => {});
+        },
+        // 关闭回调
+        getclose() {
+            alert('哈哈')
+        },
+        openFullScreen() {
+            this.fullscreenLoading = true;
+            setTimeout(() =>{
+                this.fullscreenLoading = false;
+            }, 10000)
+        },
+        // 服务方式加载全屏loading
+        openFullScreen2() {
+            const loading = this.$loading({
+                lock: true,
+                text: 'Loading',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+            });
+            setTimeout(() => {
+                loading.close();
+            }, 2000);
+        },
+        // 打开消息提示
+        open() {
+            this.$message('这是一条消息提示');
+        },
+        openVn() {
+            const h = this.$createElement;
+            console.log(h);
+            this.$message({
+                message: h('p', null, [h('span', null, '内容可以是'), h('i', {style: 'color: teal'}, 'VNode')])
+            })
+
+        },
+        open1() {
+            this.$message({
+                showClose: true,
+                message: '恭喜你，已经成功了',
+                type: 'success',
+                center: true
+            })
+        },
+        open2() {
+            this.$message('这是一条消息');
+        },
+        open3() {
+            this.$message({
+                message: '警告哦，这是一条警告消息',
+                type: 'warning'
+            })
+        },
+        open4() {
+            this.$message.error('错了哦，这是一条错误消息');
         }
 
     }
