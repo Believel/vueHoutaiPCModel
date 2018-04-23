@@ -73,6 +73,7 @@
         bottom: 55px;
         left: 258px;
         background: #fff;
+        overflow-y: scroll;
       }
       .copyright {
         @include all();

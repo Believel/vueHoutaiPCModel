@@ -21,6 +21,84 @@
                 <div class="grid-content bg-purple"></div>
             </el-col>
         </el-row>
+        <Title mytitle="按钮"></Title>
+        <el-row>
+            <!-- type plain round circle -->
+            <el-button plain>默认按钮</el-button>
+            <el-button type="primary">默认按钮</el-button>
+            <el-button type="success">默认按钮</el-button>
+            <el-button type="info">默认按钮</el-button>
+            <el-button type="warning">默认按钮</el-button>
+            <el-button type="danger">默认按钮</el-button>
+        </el-row>
+        <el-row>
+            <el-button plain>默认按钮</el-button>
+            <el-button type="primary" plain>默认按钮</el-button>
+        </el-row>
+        <el-row>
+            <el-button round disabled>默认按钮</el-button>
+            <el-button type="primary" round>默认按钮</el-button>
+        </el-row>
+        <el-row>
+            <el-button icon="el-icon-search">默认按钮</el-button>
+            <el-button type="primary" icon="el-icon-edit" circle></el-button>
+        </el-row>
+        <el-row>
+            <el-button type="text">文字信息</el-button>
+            <el-button type="text" disabled>文字信息</el-button>
+            <el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>
+        </el-row>
+        <el-row>
+            <el-button-group>
+                <el-button type="primary" icon="el-icon-arrow-left">上一页</el-button>
+                <el-button type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+            </el-button-group>
+            <el-button type="primary" :loading="true" size="medium">
+                lodding
+            </el-button>
+        </el-row>
+        <Title mytitle="单选按钮"></Title>
+        <el-row>
+            <el-radio v-model="sex" label="man">男</el-radio>
+            <el-radio v-model="sex" label="women">女</el-radio>
+        </el-row>
+        <el-row>
+            <el-radio-group v-model="radio2" @change="radiochange">
+                <el-radio :label="1">备选项</el-radio>
+                <el-radio :label="2">备选项</el-radio>
+                <el-radio :label="3">备选项</el-radio>
+            </el-radio-group>
+        </el-row>
+        <Title mytitle="复选按钮"></Title>
+        <el-row>
+            <el-checkbox v-model="checked" disabled>备选项</el-checkbox>
+        </el-row>
+        <el-row>
+            <el-checkbox-group v-model="checkList">
+                <el-checkbox label="复选框 A"></el-checkbox>
+                <el-checkbox label="复选框 B"></el-checkbox>
+                <el-checkbox label="复选框 C"></el-checkbox>
+                <el-checkbox label="禁用" disabled></el-checkbox>
+                <el-checkbox label="选中且禁用" disabled></el-checkbox>
+            </el-checkbox-group>
+        </el-row>
+        <el-row>
+            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleChangeAll">全选</el-checkbox>
+            <div style="margin: 10px 0;"></div>
+            <el-checkbox-group v-model="checkedCities" @change="handleChangeCheckedCities">
+                <el-checkbox v-for="(item, index) in cities" :label="item" :key="index">
+                    {{item}}
+                </el-checkbox>
+            </el-checkbox-group>
+        </el-row>
+        <Title mytitle="输入框"></Title>
+        <el-row>
+            <el-col :span="8">
+                <el-input v-model="input" placehoder="请输入" clearable></el-input>
+            </el-col>
+        </el-row>
+       
+        
     </div>
 </template>
 
@@ -30,19 +108,50 @@ export default {
     name: 'practice',
     data() {
         return {
-            visible: false
+            visible: false,
+            sex: 'man',
+            radio2: 1,
+            checked: true,
+            checkList: ['选中且禁用', '复选框 A'],
+            isIndeterminate: true,
+            checkAll: false,
+            checkedCities: ['上海', '北京'],
+            cities: ['上海', '北京', '广州', '深圳'],
+            input: ''
+
         }
     },
     components: {
         Title
     },
     created() {},
-    mounted() {},
-    methods: {}
+    mounted() {
+    },
+    methods: {
+        // 单选按钮事件
+        radiochange(value) {
+            console.log(value)
+        },
+        // 全选
+        handleChangeAll(all) {
+            this.checkedCities = all ? this.cities : [];
+            this.isIndeterminate = false;
+        },
+        // 城市选择事件
+        handleChangeCheckedCities(city) {
+            let checkedCount = city.length;
+            this.checkAll = checkedCount === this.cities.length;
+            this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+
+        }
+    }
 }
 </script>
 
 <style lang="scss">
+    .practice {
+        padding: 10px;
+    }
     .el-row {
         margin-bottom: 20px;
          .el-col {
