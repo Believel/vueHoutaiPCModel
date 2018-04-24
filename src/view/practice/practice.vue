@@ -97,13 +97,155 @@
                 <el-input v-model="input" placehoder="请输入" clearable></el-input>
             </el-col>
         </el-row>
+
         <Title mytitle="计数器"></Title>
         <el-input-number v-model="num" @change="handleChangeNum" controls-position="left" :min="1" :max="10" :step="2" label="文字描述"></el-input-number>
+        
         <Title mytitle="选择器"></Title>
-        <el-select  v-model="value" placehoder="请选择" clearable >
-            <el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled">
-            </el-option>
-        </el-select>
+        <el-row>
+            <el-select  v-model="value" placehoder="单选可清空" clearable >
+                <el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value" :disabled="item.disabled">
+                </el-option>
+            </el-select>
+        </el-row>
+        <el-row>
+            <el-select v-model="value1" multiple collapse-tags placeholder="多选">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> 
+                </el-option>
+            </el-select>
+        </el-row>
+        <el-row>
+            <el-select v-model="value2" placeholder="分组选择">
+                <el-option-group v-for="group in options3" :key="group.label" :label="group.label" :value="group.label">
+                    <el-option v-for="item in group.options" :key="item.label" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-option-group>
+            </el-select>
+        </el-row>
+
+        <Title mytitle="开关"></Title>
+        <el-row>
+            <el-col :span="3">
+                <el-switch v-model="switch1" active-color="#13ce66" inactive-color="#ff4949" @change="handlechangeHandle"></el-switch>
+            </el-col>
+           <el-col :span="8">
+                <el-switch disabled v-model="switch2" active-text="按月付费" inactive-text="按年付费"></el-switch>
+           </el-col>
+        </el-row>
+        <Title mytitle="滑块"></Title>
+        <el-row>
+            <el-col :span="3">默认</el-col>
+            <el-col :span="21">
+                <el-slider v-model="slider1"></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">自定义初始值</el-col>
+            <el-col :span="21" >
+                <el-slider v-model="slider2"></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">隐藏Tooltip</el-col>
+            <el-col :span="21" >
+                <el-slider v-model="slider3" :show-tooltip="false" :step="10"></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">格式化</el-col>
+            <el-col :span="21" >
+                <el-slider v-model="slider4" :format-tooltip="formatTooltip"></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">禁用</el-col>
+            <el-col :span="21">
+                <el-slider v-model="slider5" disabled></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">带有输入框</el-col>
+            <el-col :span="21">
+                <el-slider v-model="slider5" show-input></el-slider>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">范围选择</el-col>
+            <el-col :span="21">
+                <el-slider v-model="slider6" range :max="10" show-stops></el-slider>
+            </el-col>
+        </el-row>
+         <el-row>
+            <el-col :span="3">竖向模式</el-col>
+            <el-col :span="21">
+                <el-slider v-model="slider7" vertical height="200px"></el-slider>
+            </el-col>
+        </el-row>
+        <Title mytitle="时间选择器"></Title>
+        <el-row>
+            <el-col :span="3">
+                固定时间点
+            </el-col>
+            <el-col :span="10">
+                <el-time-select v-model="time1" :picker-options="{start: '07:00', end: '18:30', step: '00:15'}" placeholder="选择时间">
+                </el-time-select>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">
+                任意时间点
+            </el-col>
+            <el-col :span="10">
+                <el-time-picker v-model="time2" arrow-control :picker-options="{selectableRange: '18:30:00 - 20:30:00'}" placeholder="任意时间点">
+                </el-time-picker>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="3">
+                固定时间范围
+            </el-col>
+            <el-col :span="8">
+                <el-time-select placeholder="起始时间" v-model="startTime" :picker-options="{start: '08:30',step: '00: 15', end: '18:30'}">
+                </el-time-select>
+            </el-col>
+            <el-col :span="8">
+                <el-time-select placeholder="结束时间" v-model="endTime" :picker-options="{start: '08:30',step: '00: 15', end: '18:30', minTime: startTime}">
+                </el-time-select>
+            </el-col>
+        </el-row>
+        <Title mytitle="日期选择器"></Title>
+        <el-row>
+            <el-col :span="3">
+                默认
+            </el-col>
+            <el-col :span="5">
+                <el-date-picker v-model="date1" type="date" placeholder="请选择日期">
+                </el-date-picker>
+            </el-col>
+        </el-row>
+        <Title mytitle="时间日期选择器"></Title>
+        <el-row>
+
+        </el-row>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <Title mytitle="对话框"></Title>
         <el-button type="primary" @click="dialogVisible = true">点击打开dialog</el-button>
         <Title mytitle="警告"></Title>
@@ -119,6 +261,7 @@
         <el-row>
              <el-alert title="错误提示" type="error"></el-alert>
         </el-row>
+        
         <Title mytitle="加载"></Title>
         <el-table
             v-loading="loading2"
@@ -146,6 +289,7 @@
             <el-button type="primary" @click="openFullScreen" v-loading.fullscreen.lock="fullscreenLoading">指令方式</el-button>
             <el-button type="primary" @click="openFullScreen2">服务方式</el-button>
         </el-row>
+        
         <Title mytitle="消息提示"></Title>
         <el-button :plain="true" @click="open">打开消息提示</el-button>
         <el-button :plain="true" @click="openVn">VNode</el-button>
@@ -214,6 +358,68 @@ export default {
                 label: '北京烤鸭'
             }],
             value: '',
+            value1: [],
+            value2: '',
+            options3: [
+                {
+                    label: '热门城市',
+                    options: [
+                        {
+                            value: 'Shanghai',
+                             label: '上海'
+                        },
+                        {
+                            value: 'Beijing',
+                            label: '北京'
+                        }
+                    ]
+                },
+                {
+                    label: '城市名',
+                    options: [
+                        {
+                            value: 'Chengdu',
+                            label: '成都'
+                        },
+                        {
+                            value: 'Shenzhen',
+                            label: '深圳'
+                        },
+                        {
+                            value: 'Guangzhou',
+                            label: '广州'
+                        },
+                        {
+                            value: 'Dalian',
+                            label: '大连'
+                        }
+                    ]
+                }
+            ],
+            // 开关
+            switch1: true,
+            switch2: true,
+            // 滑块
+            slider1: 0,
+            slider2: 10,
+            slider3: 100,
+            slider4: 40,
+            slider5: 33,
+            slider6: [4, 8],
+            slider7: 12,
+            // 时间选择器
+            time1: '',
+            time2: '',
+            time3: '',
+            time4: '',
+            startTime: '',
+            endTime: '',
+            // 日期选择器
+            date1: '',
+            date2: '',
+            // 日期时间选择器
+            datetime1: '',
+            datetime2: '',
             // 对话框
             dialogVisible: false,
             // 表格数据
@@ -316,6 +522,14 @@ export default {
         },
         open4() {
             this.$message.error('错了哦，这是一条错误消息');
+        },
+        // 开关
+        handlechangeHandle(value) {
+            console.log(value);// true / false
+        },
+        // 滑块
+        formatTooltip(val) {
+            return val / 100;
         }
 
     }
