@@ -37,3 +37,4 @@ npm run build testdev
 # 生产环境
 npm run build pro
 ```
+![](https://github.com/Believel/vueHoutaiPCModel/issues/1)

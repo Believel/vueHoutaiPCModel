@@ -227,6 +227,36 @@
         <el-row>
 
         </el-row>
+        <Title mytitle="折叠面板"></Title>
+        <el-row>
+            <el-collapse v-model="activeNames" @change="handleCollapse" accordion>
+                <el-collapse-item title="一致性" name="0">
+                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+                </el-collapse-item>
+                <el-collapse-item title="反馈" name="1">
+                    <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+                    <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+                    <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+                </el-collapse-item>
+            </el-collapse>
+        </el-row>
+        <el-row>
+            自定义面板标题
+        </el-row>
+        <el-row>
+            <el-collapse accordion v-model="activeNames1">
+                <el-collapse-item v-for="(menulist, index) in menulists" :key="index" :name="`${index}`">
+                    <template slot="title">
+                        {{menulist.name}}
+                    </template>
+                    <ul>
+                        <li v-for="(item, index) in menulist.menuli" :key="index">{{item.name}}</li>
+                    </ul>
+                </el-collapse-item>
+            </el-collapse>
+        </el-row>
 
         
 
@@ -430,7 +460,15 @@ export default {
                 {date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'}
             ],
             loading2: true,
-            fullscreenLoading: false
+            fullscreenLoading: false,
+            // 折叠面板
+            activeNames: ['0'],
+            activeNames1: ['0'],
+            menulists: [
+                {name: '首页', imgname: 'home', menuli: [{name: '系统首页', page: 'homechild'}, {name: '账户设置', page: 'accoutset'}]},
+                {name: '管理', imgname: 'manage', menuli: [{name: '系统首页', page: 'homechild'}, {name: '账户设置', page: 'accoutset'}]},
+                {name: '比例', imgname: 'case', menuli: [{name: '系统首页', page: 'homechild'}, {name: '账户设置', page: 'accoutset'}]}
+            ]
 
         }
     },
@@ -530,6 +568,10 @@ export default {
         // 滑块
         formatTooltip(val) {
             return val / 100;
+        },
+        // 折叠面板
+        handleCollapse(value) {
+            console.log(value);
         }
 
     }
