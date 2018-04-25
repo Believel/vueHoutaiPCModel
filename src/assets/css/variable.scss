@@ -1,6 +1,7 @@
 /*定义公共颜色样式*/
 /*文字颜色*/
 $black_c:#000000;
+$green_c: #1CC09F;
 
 /*占位符颜色*/
 $placehoder_c:rgb(204, 204, 204);
@@ -18,12 +19,23 @@ $grey_c:#999;
 /* 红色 */
 $red_c: #EA3D45;
 
+/* 绿色 */
+$green_c: #00BD9C ;
+
 /*背景颜色*/
 $bg_c:rgba(0, 0, 0, 0.498);
 $bg_cw: #ffffff;
 
+/*边框颜色*/
+$border_c: #D8DDE9; 
+
+
 
 /*定义固定文字尺寸*/
+$font4: 14px;
+
+$font8: 18px;
+
 $font10:20px;
 
 $font12:24px;
