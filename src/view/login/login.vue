@@ -104,6 +104,9 @@
                     }
                     .input_password {
                         margin-top: 25px;
+                        i {
+                            @include bis('../../assets/img/password.png');
+                        }
                         .loginbtn {
                             width: 100%;
                             height: 50px;
