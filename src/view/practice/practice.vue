@@ -356,6 +356,7 @@
 </template>
 
 <script>
+import router from '../../router';
 import Title from '@/components/MyTitle';
 export default {
     name: 'practice',
@@ -479,6 +480,7 @@ export default {
     },
     created() {},
     mounted() {
+        
     },
     methods: {
         // 单选按钮事件
