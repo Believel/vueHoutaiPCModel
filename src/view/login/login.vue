@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        登录界面
+        <el-button type="primary" @click="login">登录</el-button>
     </div>
 </template>
 <script>
@@ -13,7 +13,10 @@
 
         },
         methods: {
-        
+            // 登录
+            login() {
+                this.$router.push({'name': 'homechild'});
+            }
         },
         mounted() {
             
@@ -25,7 +28,7 @@
 </script>
 <style lang="scss" scoped>
     .login {
-        
+        color: $red_c;
         
     }
 </style>

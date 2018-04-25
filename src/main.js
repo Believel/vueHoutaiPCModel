@@ -17,7 +17,7 @@ Vue.use(vueUtil);
 // 完整的引入了Element,那么Vue.prototype上会有一个全局的$loading，它的调用方式为：this.$loading(options),会返回一个Loading实例
 Vue.use(elementUi);
 Vue.prototype.$http = axios;
-console.log(Vue.prototype)
+// console.log(Vue.prototype)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
