@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
+// 把依赖的CSS抽离成单独文件
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 

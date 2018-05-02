@@ -7,6 +7,8 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// 单独把css文件抽离出来
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -64,7 +66,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             filename: config.build.index,
             template: 'index.html',
             inject: true,
-            minify: {
+            minify: {// 压缩HTML的配置
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true

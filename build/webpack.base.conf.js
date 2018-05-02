@@ -23,8 +23,10 @@ module.exports = {
                 : config.dev.assetsPublicPath
     },
     resolve: {
+        // 这里的顺序代表匹配后缀的优先级
         extensions: ['.js', '.vue', '.json'],
         alias: {
+            // 精确匹配：在给定对象的键名后天就$
             vue$: 'vue/dist/vue.esm.js',
             '@': resolve('src'),
             'src': path.resolve(__dirname, '../src'),
@@ -33,6 +35,7 @@ module.exports = {
         }
     },
     plugins: [
+        // webpack内置的插件，该组件用于引用某些模块作为应用运行时的变量，从而不必每次都用require或者import
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -64,7 +67,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000,
+                    limit: 10000, //单位是Byte,当文件小于10KB时作为DataURL处理
                     name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },

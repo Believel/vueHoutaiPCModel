@@ -1,3 +1,5 @@
+// process.argv属性返回一个数组，这个数组包含了启动NOde.js进程时的命令参数。第一个元素为process.execPath。第二个元素为当前执行的javascript文件路径
+console.log(process.argv);
 var buildtype = process.argv.slice(2)[0]
 console.log('------start build-------' + buildtype)
 var obj = {

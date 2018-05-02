@@ -223,6 +223,15 @@
                 </el-date-picker>
             </el-col>
         </el-row>
+        <el-row>
+            <el-col :span="3">
+                格式化日期格式和选择日期范围
+            </el-col>
+            <el-col :span="5">
+                <el-date-picker @change="dateChange" v-model="date1" type="date" placeholder="请选择日期" value-format="yyyy-MM-dd">
+                </el-date-picker>
+            </el-col>
+        </el-row>
         <Title mytitle="时间日期选择器"></Title>
         <el-row>
 
@@ -576,6 +585,9 @@ export default {
         // 折叠面板
         handleCollapse(value) {
             console.log(value);
+        },
+        dateChange(val) {
+            console.log(val)
         }
 
     }

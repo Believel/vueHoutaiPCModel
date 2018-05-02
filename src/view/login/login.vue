@@ -58,7 +58,6 @@
             height: 50px;
         }
     }
-
 </style>
 
 <style lang="scss" scoped>
