@@ -16,7 +16,7 @@
                         <i></i>
                     </div>
                     <div class="input_password">
-                        <el-button type="primary" class="loginbtn">登录</el-button>
+                        <el-button type="primary" class="loginbtn" @click="login">登录</el-button>
                     </div>
                     <div class="register">
                         注册
@@ -45,7 +45,7 @@
             }
         },
         mounted() {
-            
+        
         },
         watch: {
 
@@ -121,6 +121,6 @@
                 }
             }
         }
-        
+
     }
 </style>
