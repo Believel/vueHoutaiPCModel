@@ -66,7 +66,7 @@
                     Username: this.phone,
                     Password: this.password
                   });
-                  utils.successtip(res.data.Info);
+                  utils.successtip(result.data.Info);
                   // 调用登录接口
                   this.$router.push({'name': 'homechild'});
               } catch(e) {

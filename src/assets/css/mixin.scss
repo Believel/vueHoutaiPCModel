@@ -5,6 +5,7 @@
 	  left: 50%;
 	  transform: translate(-50%, -50%);
 }
+// 定位占全屏
 @mixin all {
 	position: absolute;
 	right: 0;
@@ -35,4 +36,3 @@
 	background-image: url($url);
 	background-repeat: no-repeat;
 }
-

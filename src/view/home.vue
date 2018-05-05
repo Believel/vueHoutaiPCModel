@@ -1,9 +1,7 @@
 <template>
   <div class="home">
       <!-- 顶部导航 -->
-      <div class="top">
-
-      </div>
+      <TopNav></TopNav>
       <!-- 左边菜单项 -->
       <div class="sidemenu">
 
@@ -23,32 +21,28 @@
   </div>
 </template>
 <script>
+  import TopNav from 'components/TopNav';
   export default {
-    name: 'home',
-    data () {
-      return {}
-    },
-    components: {
+      name: 'home',
+      data () {
+        return {}
+      },
+      components: {
+          TopNav
+      },
+      methods: {
 
-    },
-    methods: {
+      },
+      mounted() {
 
-    },
-    mounted() {
+      },
+      watch: {
 
-    },
-    watch: {
-
-    }
+      }
   }
 </script>
 <style lang="scss" scoped>
   .home {
-      .top {
-          width: 100%;
-          height: 58px;
-          background-color: green;
-      }
       .sidemenu {
           @include all();
           width: 258px;
