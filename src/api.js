@@ -20,3 +20,5 @@ export const get_baidu = params => vhttp('/baidu', params, 'GET');
 
 // 请求百度接口获取数据
 export const post_baidu = params => vhttp('/baidu', params, 'POST');
+// 登录
+export const post_login = params => vhttp('/api/People/Login', params, 'POST');

@@ -1,11 +1,14 @@
 import axios from 'axios'
 import config from '@/config.js'
 import util from '@/util/util.js'
+import router from '@/router'
+import utils from '@/util/util.js'
 const URLWEBHTTP = config.URLWEBHTTP
 
 /**
  * 封装的axios和ajax 一般用axios足够。如果有jsonp需求可以使用zport的ajax;
  */
+ console.log(URLWEBHTTP);
 
 export default async (apiurl = '', params = {}, type = 'GET', method = 'axios') => {
     type = type.toUpperCase()
@@ -25,7 +28,14 @@ export default async (apiurl = '', params = {}, type = 'GET', method = 'axios') 
                 //emulateHTTP: true,
                 //emulateJSON:true
             }).then(res => {
-                resolve(res)
+                if (res.data.StatusCode === -1001) {
+                  router.$router.push({'name': 'login'});
+                } else if(res.data.StatusCode === 0){
+                  resolve(res)
+                } else {
+                  utils.errortip(res.data.Info);
+                }
+
             }).catch(err => {
                 //util.vueEvent.$emit('disloading')
                 reject(err)
@@ -34,7 +44,7 @@ export default async (apiurl = '', params = {}, type = 'GET', method = 'axios') 
     } else {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: URLWEBHTTP + apiurl,
+                url:URLWEBHTTP + apiurl,
                 dataType: 'jsonp',
                 data: params,
                 jsonp: 'callback',

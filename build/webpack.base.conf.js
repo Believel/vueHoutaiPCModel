@@ -31,7 +31,7 @@ module.exports = {
             '@': resolve('src'),
             'src': path.resolve(__dirname, '../src'),
             'components': path.resolve(__dirname, '../src/components'),
-            'static': path.resolve(__dirname, '../static'),
+            'static': path.resolve(__dirname, '../static')
         }
     },
     plugins: [

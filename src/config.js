@@ -20,7 +20,7 @@ export default setConfig({
     /* 不同环境配置 */
     setting: {
         localhost: {
-            URLWEBHTTP: 'http://localhost:8089/api'
+            URLWEBHTTP: 'http://devlfybmesinfo.zhiscity.com'
         },
         testdev: {
             URLWEBHTTP: 'http://www.baidu.com/testdev'
@@ -29,7 +29,7 @@ export default setConfig({
             URLWEBHTTP: 'http://www.baidu.com/pro'
         },
         dev: {
-            URLWEBHTTP: 'http://www.baidu.com/dev'
+            URLWEBHTTP: 'http://devlfybmesinfo.zhiscity.com'
         },
         beta: {
             URLWEBHTTP: 'http://www.baidu.com/bata'
