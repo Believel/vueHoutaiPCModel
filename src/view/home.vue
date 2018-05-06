@@ -3,9 +3,7 @@
       <!-- 顶部导航 -->
       <TopNav></TopNav>
       <!-- 左边菜单项 -->
-      <div class="sidemenu">
-
-      </div>
+      <SideMenu></SideMenu>
       <!-- 面包屑 -->
       <div class="breadcrumb">
 
@@ -22,13 +20,15 @@
 </template>
 <script>
   import TopNav from 'components/TopNav';
+  import SideMenu from 'components/SideMenu';
   export default {
       name: 'home',
       data () {
         return {}
       },
       components: {
-          TopNav
+          TopNav,
+          SideMenu
       },
       methods: {
 
@@ -43,17 +43,6 @@
 </script>
 <style lang="scss" scoped>
   .home {
-      .sidemenu {
-          @include all();
-          width: 258px;
-          height: auto;
-          background-color: red;
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          top: 58px;
-      }
       .breadcrumb {
           @include all();
           top: 58px;

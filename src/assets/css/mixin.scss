@@ -36,3 +36,7 @@
 	background-image: url($url);
 	background-repeat: no-repeat;
 }
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'PingFangSC-Regular') {
+	font: #{$size}/#{$line-height} $family;
+}

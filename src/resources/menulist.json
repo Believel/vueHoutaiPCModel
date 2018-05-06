@@ -1,0 +1,108 @@
+[
+  {
+      "name" : "系统首页",
+      "imgname" : "btn_shouye",
+      "children": [
+          {
+            "name" : "系统首页",
+            "page" : "homechild"
+          }
+      ]
+  },
+  {
+      "name": "贫困人口",
+      "imgname": "btn_guanli",
+      "children": [
+          {
+              "name": "贫困人口信息管理",
+              "page": "poorpeoplemanage"
+          }
+      ]
+  },
+  {
+      "name": "统计查询",
+      "imgname": "btn_tongji",
+      "children": [
+          {
+              "name": "贫困人员结算查询",
+              "page": "poorpeoplesettlement"
+          }
+      ]
+  },
+  {
+      "name": "反馈工单",
+      "imgname": "btn_fankui",
+      "children": [
+          {
+              "name": "新建工单",
+              "page": "createorder"
+          },
+          {
+              "name": "我的工单",
+              "page": "myorder"
+          },
+          {
+              "name": "未处理的工单",
+              "page": "unhandlerorder"
+          },
+          {
+              "name": "正在处理的工单",
+              "page": "handleringorder"
+          },
+          {
+              "name": "关闭/完成的工单",
+              "page": "closeorder"
+          }
+      ]
+  },
+  {
+      "name": "系统通知",
+      "imgname": "btn_tongzhi",
+      "children": [
+          {
+              "name": "发布通知",
+              "page": "publishnotice"
+          },
+          {
+              "name": "我发布的通知",
+              "page": "mypublishnotice"
+          },
+          {
+              "name": "未读通知",
+              "page": "unreadnotice"
+          },
+          {
+              "name": "已读通知",
+              "page": "readnotice"
+          }
+      ]
+  },
+  {
+      "name": "系统设置",
+      "imgname": "btn_sysshezhi",
+      "children": [
+          {
+              "name": "部门管理",
+              "page": "departmentmanage"
+          },
+          {
+              "name": "人员管理",
+              "page": "staffmanage"
+          }
+      ]
+  },
+  {
+      "name": "功能设置",
+      "imgname": "btn_sysshezhi",
+      "children": [
+          {
+              "name": "业务组管理",
+              "page": "workgroupmanage"
+          },
+          {
+              "name": "功能管理",
+              "page": "functionmanage"
+          }
+      ]
+  }
+]
