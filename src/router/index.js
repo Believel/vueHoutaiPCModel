@@ -23,8 +23,8 @@ export default new Router({
                     component: homechild
                 },
                 {  //练习页面
-                    path: 'practice',
-                    name: 'practice',
+                    path: 'poorpeoplemanage',
+                    name: 'poorpeoplemanage',
                     component: practice
                 }
             ]

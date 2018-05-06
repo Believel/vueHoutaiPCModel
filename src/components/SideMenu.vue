@@ -6,7 +6,7 @@
                     <i class="iconimg" :class="item.imgname"></i> {{item.name}}
                 </template>
                 <ul class="menuul">
-                  <li v-for="child in item.children" :key="child.name" class="menuli">{{child.name}}</li>
+                  <li v-for="(child, index) in item.children" :key="index" class="menuli"  :type="child.page" @click="menuclick(child)">{{child.name}}</li>
                 </ul>
             </el-collapse-item>
         </el-collapse>
@@ -15,14 +15,97 @@
 
 <script>
     import menuList from '@/resources/menulist.json'
+    import router from '@/router';
     export default {
         data() {
             return {
                 menulist: menuList,
-                activeName: '0' // 默认选中
+                activeName: ['0'] // 默认选中
             }
         },
+        created() {
+            // 3. 当路由改变时也要改变菜单项的指向
+            router.beforeEach((to, from, next) => {
+                let arr = to.path.split('/');
+                let name = arr[2];
+                this.menuLight(name);
+                this.getBreadNames(name, arr);
+                next();
+            });
+        },
         mounted() {
+            // 1.当刷新浏览器是会触发
+            // 2. 当从登录页进入会触发
+            setTimeout(() => {
+                this.setMenuHandler();
+            }, 1000)
+        },
+        methods: {
+          /**
+           * 点击二级菜单显示不同的路由视图
+           * @param item 当前的菜单项{name: '系统首页', page: 'homechild', list: [{name: '', page: ''}]}
+           */
+           menuclick(item) {
+              // 1. 跳转路由
+              this.$router.push({"name": item.page});
+           },
+           /**
+            *  当前菜单项名字设置为白色
+            */
+           menuLight(page) {
+                $('.menuul').find('.menuli').removeClass('myWhite');
+                $('.menuul').find("[type$= '"+page+"']").addClass('myWhite');
+           },
+           /**
+            *  根据路由地址设置当前菜单项高亮
+            */
+            setMenuHandler() {
+                // 1. 得到当前路由
+                let url = window.location.href;
+                let arr = url.split('#')[1].split('/');
+                let name = arr[2];
+                // 3.高亮显示
+                this.menuLight(name);
+                // 4.设置当前手风琴索引并找到每级菜单的名称，并返回
+                this.getBreadNames(name, arr);
+            },
+            /**
+             *  得到当前面包屑的导航名称
+             * @param name  当前点击的菜单页
+             * @param arr  当前路由地址
+             * return  一段字符串
+             */
+            getBreadNames(name, arr) {
+              console.log(name);
+              console.log(arr)
+                let name1 = ''; // 一级菜单名称
+                let name2 = ''; // 二级菜单名称
+                let name3 = ''; // 三级菜单名称
+                let menuIndex = '';
+                for (let item of this.menulist) {
+                    for (let child of item.children) {
+                        name1 = item.name;
+                        name2 = child.name;
+                        if (child.page === name) {
+                            menuIndex = this.menulist.findIndex((value, index) => {
+                                return value.name === item.name;
+                            })
+                            menuIndex = menuIndex.toString();
+                            if (child.list && child.list.length > 0) {
+                                for (let listitem of child.list) {
+                                    if (listitem.page === arr[3]) {
+                                        name3 = listitem.name;
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                console.log(menuIndex)
+                this.activeName = [];
+                this.activeName.push(menuIndex);
+            }
         }
 
     }
@@ -79,8 +162,8 @@
                 line-height: 38px;
             }
             .el-collapse-item .el-collapse-item__content {
+              padding-bottom: 0;
               background-color: #2F4050;
-              color: #cccccc;
               font-family: 'PingFangSC-Regular';
               .menuul {
                   margin-left:57px;
@@ -88,6 +171,10 @@
                   .menuli {
                     padding-bottom: 22px;
                     font-size: 14px;
+                    color: #cccccc;
+                  }
+                  .myWhite {
+                      color: #ffffff;
                   }
               }
             }
@@ -123,7 +210,7 @@
         height: auto;
         background-color: $bg_side;
         top: 58px;
-        padding-top: 8px;
+        // padding-top: 8px;
         overflow-x: hidden;
         overflow-y: auto;
     }
