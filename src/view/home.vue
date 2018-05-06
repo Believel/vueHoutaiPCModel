@@ -2,12 +2,13 @@
   <div class="home">
       <!-- 顶部导航 -->
       <TopNav></TopNav>
+
       <!-- 左边菜单项 -->
       <SideMenu></SideMenu>
-      <!-- 面包屑 -->
-      <div class="breadcrumb">
 
-      </div>
+      <!-- 面包屑 -->
+      <BreadCrumb></BreadCrumb>
+
       <!-- 二级路由内容 -->
       <div class="content">
           <router-view></router-view>
@@ -21,6 +22,7 @@
 <script>
   import TopNav from 'components/TopNav';
   import SideMenu from 'components/SideMenu';
+  import BreadCrumb from 'components/BreadCrumb';
   export default {
       name: 'home',
       data () {
@@ -28,7 +30,8 @@
       },
       components: {
           TopNav,
-          SideMenu
+          SideMenu,
+          BreadCrumb
       },
       methods: {
 
@@ -43,20 +46,13 @@
 </script>
 <style lang="scss" scoped>
   .home {
-      .breadcrumb {
-          @include all();
-          top: 58px;
-          left: 258px;
-          height: 55px;
-          background-color: pink;
-      }
       .content {
         @include all();
         top: 113px;
         bottom: 55px;
         left: 258px;
-        background: #fff;
-        overflow-y: scroll;
+        background: #F3F3F4;
+        overflow-y: auto;
       }
       .copyright {
         @include all();

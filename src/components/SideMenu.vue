@@ -16,6 +16,7 @@
 <script>
     import menuList from '@/resources/menulist.json'
     import router from '@/router';
+    import {mapMutations} from 'vuex';
     export default {
         data() {
             return {
@@ -29,7 +30,7 @@
                 let arr = to.path.split('/');
                 let name = arr[2];
                 this.menuLight(name);
-                this.getBreadNames(name, arr);
+                this.savefreshname(this.getBreadNames(name, arr));
                 next();
             });
         },
@@ -37,7 +38,7 @@
             // 1.当刷新浏览器是会触发
             // 2. 当从登录页进入会触发
             setTimeout(() => {
-                this.setMenuHandler();
+               this.savefreshname(this.setMenuHandler());
             }, 1000)
         },
         methods: {
@@ -67,26 +68,25 @@
                 // 3.高亮显示
                 this.menuLight(name);
                 // 4.设置当前手风琴索引并找到每级菜单的名称，并返回
-                this.getBreadNames(name, arr);
+                return this.getBreadNames(name, arr);
             },
             /**
-             *  得到当前面包屑的导航名称
+             *  得到当前面包屑的导航名称并且设置当前点击菜单项的父级为选中项
              * @param name  当前点击的菜单页
              * @param arr  当前路由地址
-             * return  一段字符串
+             * return refreshHtml 一段字符串
              */
             getBreadNames(name, arr) {
-              console.log(name);
-              console.log(arr)
                 let name1 = ''; // 一级菜单名称
                 let name2 = ''; // 二级菜单名称
                 let name3 = ''; // 三级菜单名称
-                let menuIndex = '';
+                let menuIndex = ''; // 当前单击的父级索引
+                let refreshHtml = ''; // 返回的字符串名字
                 for (let item of this.menulist) {
                     for (let child of item.children) {
-                        name1 = item.name;
-                        name2 = child.name;
                         if (child.page === name) {
+                            name1 = item.name;
+                            name2 = child.name;
                             menuIndex = this.menulist.findIndex((value, index) => {
                                 return value.name === item.name;
                             })
@@ -102,10 +102,19 @@
                         }
                     }
                 }
-                console.log(menuIndex)
                 this.activeName = [];
                 this.activeName.push(menuIndex);
-            }
+                if (name3 !== '') {
+                    refreshHtml = `<span>${name1}</span> / <span>${name2}</span> / <span>${name3}</span>`;
+                } else {
+                    refreshHtml = `<span>${name1}</span> / <span>${name2}</span>`
+                }
+                return refreshHtml;
+
+            },
+            ...mapMutations({
+                'savefreshname' : 'SAVEREFRESHNAME'
+            })
         }
 
     }

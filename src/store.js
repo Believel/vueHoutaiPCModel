@@ -3,11 +3,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    name: 'this is vuex store name'
+    name: 'this is vuex store name',
+    refreshstr: ''
 }
 const mutations = {
     changeName(state, str) {
         state.name = str
+    },
+    SAVEREFRESHNAME(state, str) {
+        state.refreshstr = str;
     }
 }
 const getters = {}
