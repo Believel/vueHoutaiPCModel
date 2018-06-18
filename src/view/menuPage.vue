@@ -273,16 +273,7 @@
               ]
           }
       ]
-      }
-
-
-    let menuDataDemo =
-      [
-        {
-          id: '1',
-          path:''
-        }
-      ];
+    };
 
     export default {
         data() {

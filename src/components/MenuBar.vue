@@ -19,7 +19,7 @@
                 v-if="value.childs==null && value.entity && value.entity.state === 'ENABLE'"
                 :key="value.entity.id"
                 :data="value"
-                :route="value.entity.value" disabled="">
+                :route="value.entity.value">
                <i :class="value.entity.icon"></i>
                <span slot="title">{{value.entity.alias}}</span>
             </el-menu-item>

@@ -45,28 +45,28 @@
             async login() {
               try {
                   // 手机号为空
-                  if (!this.phone) {
-                    utils.errortip('手机号不能为空!');
-                    return;
-                  }
+                //   if (!this.phone) {
+                //     utils.errortip('手机号不能为空!');
+                //     return;
+                //   }
                   // 密码为空
-                  if (!this.password) {
-                    utils.errortip('密码不能为空!');
-                    return;
-                  }
+                //   if (!this.password) {
+                //     utils.errortip('密码不能为空!');
+                //     return;
+                //   }
                   // 如果手机号和密码都不为空
-                  if (this.phone && this.password) {
-                    let phoneReg = /^1[3|4|5|8][0-9]\d{8}$/;
-                    if (!phoneReg.test(this.phone)) {
-                        utils.errortip('手机号规则不正确');
-                        return;
-                    }
-                  }
-                  let result = await post_login({
-                    Username: this.phone,
-                    Password: this.password
-                  });
-                  utils.successtip(result.data.Info);
+                //   if (this.phone && this.password) {
+                //     let phoneReg = /^1[3|4|5|8][0-9]\d{8}$/;
+                //     if (!phoneReg.test(this.phone)) {
+                //         utils.errortip('手机号规则不正确');
+                //         return;
+                //     }
+                //   }
+                //   let result = await post_login({
+                //     Username: this.phone,
+                //     Password: this.password
+                //   });
+                //   utils.successtip(result.data.Info);
                   // 调用登录接口
                   this.$router.push({'name': 'homechild'});
               } catch(e) {
