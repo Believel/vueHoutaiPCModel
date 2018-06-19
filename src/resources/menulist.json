@@ -10,12 +10,16 @@
       ]
   },
   {
-      "name": "贫困人口",
+      "name": "elementComponent",
       "imgname": "btn_guanli",
       "children": [
           {
-              "name": "贫困人口信息管理",
+              "name": "练习组件",
               "page": "poorpeoplemanage"
+          },
+          {
+              "name": "文件上传组件",
+              "page": "fileUpload"
           }
       ]
   },

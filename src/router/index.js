@@ -6,6 +6,8 @@ import practice from '@/view/practice/practice';         // 练习界面
 import homechild from '@/view/home/homechild';           // 系统首页
 import menuPage from '@/view/menuPage';       // 树形菜单
 
+import fileUpload from '@/view/fileUpload/fileUpload' // 文件上传
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +29,11 @@ export default new Router({
                     path: 'poorpeoplemanage',
                     name: 'poorpeoplemanage',
                     component: practice
+                },
+                {
+                    path: 'fileUpload',
+                    name: 'fileUpload',
+                    component: fileUpload
                 },
                 {
                     path: 'menuPage',
