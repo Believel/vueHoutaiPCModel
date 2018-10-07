@@ -3,10 +3,13 @@ import Router from 'vue-router'
 import home from '@/view/home'                           // 系统首页
 import login from '@/view/login/login';                  // 登录页面
 import practice from '@/view/practice/practice';         // 练习界面
+import tabledemo from '@/view/practice/tabledemo';         // 表格界面
 import homechild from '@/view/home/homechild';           // 系统首页
 import menuPage from '@/view/menuPage';       // 树形菜单
 
 import fileUpload from '@/view/fileUpload/fileUpload' // 文件上传
+import animationDemo from '@/view/animation/animation.vue' // vue相关动画练习
+
 
 Vue.use(Router)
 
@@ -36,6 +39,11 @@ export default new Router({
                     component: fileUpload
                 },
                 {
+                    path: 'tabledemo',
+                    name: 'tabledemo',
+                    component: tabledemo
+                },
+                {
                     path: 'menuPage',
                     name: 'menuPage',
                     component: menuPage,
@@ -54,6 +62,12 @@ export default new Router({
           name: 'login',
           component: login,
           title: "登录"
+        },
+        {
+            path: '/animationDemo',
+            name: 'animationDemo',
+            component: animationDemo,
+            title: "动画"
         }
        
     ]
